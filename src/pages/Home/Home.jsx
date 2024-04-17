@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import Places from "../Places/Places";
 
 const Home = () => {
     return (
@@ -6,7 +7,7 @@ const Home = () => {
             <Helmet>
                 <title>Home</title>
             </Helmet>
-            <h2>This is home</h2>
+            <Places></Places>
         </div>
     );
 };

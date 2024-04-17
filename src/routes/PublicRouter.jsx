@@ -6,6 +6,9 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Home from "../pages/Home/Home";
 import SignIn from "../pages/SignIn/SignIn";
 import SignUp from "../pages/SignUp/SignUp";
+import PlaceDetails from "../pages/PlaceDetails/PlaceDetails";
+import UserProfile from "../pages/UserProfile/UserProfile";
+import UpdateProfile from "../pages/UpdateProfile/UpdateProfile";
 
 const router = createBrowserRouter([
     {
@@ -25,6 +28,24 @@ const router = createBrowserRouter([
                 path: '/signup',
                 element: <SignUp></SignUp>
             },
+            {
+                path: '/place-details',
+                element: <PlaceDetails></PlaceDetails>
+            },
+            {
+                path: '/user-profile',
+                element: <UserProfile></UserProfile>
+            },
+            {
+                path: '/update-profile',
+                element: <UpdateProfile></UpdateProfile>
+            },
+            {
+                path: '/place/:id',
+                element: <PlaceDetails></PlaceDetails>,
+                    loader: () => fetch('/estates.json')
+            },
+
         ]
     },
 ]);

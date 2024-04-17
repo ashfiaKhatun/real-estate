@@ -1,0 +1,74 @@
+[
+    {
+      "id": 1,
+      "image": "https://i.ibb.co/vHHyjCv/images.jpg",
+      "estate_title": "Modern Condo in the Heart of the City",
+      "segment_name": "City Apartments",
+      "description": "Stylish and spacious condo located in a prime urban location.",
+      "price": "$600,000",
+      "status": "sale",
+      "area": "1800 sq ft",
+      "location": "Downtown, San Francisco",
+      "facilities": ["Gym", "Parking", "Concierge"]
+    },
+    {
+      "id": 2,
+      "image": "https://i.ibb.co/FmJrLJF/images.jpg",
+      "estate_title": "Cozy Suburban Home with Garden",
+      "segment_name": "Family Homes",
+      "description": "Warm and inviting home with a lush garden, perfect for families.",
+      "price": "$450,000",
+      "status": "rent",
+      "area": "2500 sq ft",
+      "location": "Suburban Neighborhood, Chicago",
+      "facilities": ["Backyard", "Fireplace", "Deck"]
+    },
+    {
+      "id": 3,
+      "image": "https://i.ibb.co/VLGN4G7/download.jpg",
+      "estate_title": "Seaside Villa with Stunning Views",
+      "segment_name": "Luxury Homes",
+      "description": "Elegant villa overlooking the ocean, featuring luxurious amenities.",
+      "price": "$1,200,000",
+      "status": "rent",
+      "area": "3500 sq ft",
+      "location": "Coastal Town, Malibu",
+      "facilities": ["Infinity Pool", "Private Beach Access", "Home Theater"]
+    },
+    {
+      "id": 4,
+      "image": "https://i.ibb.co/xhntyvX/images.jpg",
+      "estate_title": "Historic Townhouse in Cultural District",
+      "segment_name": "Heritage Homes",
+      "description": "Charming townhouse filled with character, situated in a vibrant cultural district.",
+      "price": "$800,000",
+      "status": "sale",
+      "area": "2000 sq ft",
+      "location": "Historic District, Boston",
+      "facilities": ["Historic Charm", "Courtyard", "Balcony"]
+    },
+    {
+      "id": 5,
+      "image": "https://i.ibb.co/60dhjG3/download.jpg",
+      "estate_title": "Mountain Retreat with Panoramic Views",
+      "segment_name": "Vacation Homes",
+      "description": "Tranquil retreat nestled in the mountains, offering breathtaking panoramic views.",
+      "price": "$700,000",
+      "status": "sale",
+      "area": "2200 sq ft",
+      "location": "Mountain Village, Colorado",
+      "facilities": ["Mountain Views", "Hot Tub", "Deck"]
+    },
+    {
+      "id": 6,
+      "image": "https://i.ibb.co/fkjMV87/images.jpg",
+      "estate_title": "Urban Loft with Industrial Chic Design",
+      "segment_name": "Loft Living",
+      "description": "Spacious loft with industrial-chic design elements, located in a vibrant urban neighborhood.",
+      "price": "$500,000",
+      "status": "rent",
+      "area": "1600 sq ft",
+      "location": "Arts District, Brooklyn",
+      "facilities": ["Open Floor Plan", "Exposed Brick", "Rooftop Terrace"]
+    }
+  ]
