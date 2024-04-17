@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { useContext, useState } from "react";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
@@ -9,6 +9,9 @@ const SignIn = () => {
 
     const [showPassword, setShowPassword] = useState(false);
 
+    const location = useLocation();
+    const navigate = useNavigate();
+
     const submitSignIn = e => {
         e.preventDefault();
 
@@ -16,10 +19,11 @@ const SignIn = () => {
         const email = form.get('email');
         const password = form.get('password');
 
-        console.log(email, password);
 
         signInUser(email, password)
-            .then(result => console.log(result))
+            .then( () => {
+                navigate(location?.state ? location.state : '/');
+            })
             .catch(error => console.log(error))
         e.target.reset();
 

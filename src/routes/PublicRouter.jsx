@@ -9,6 +9,7 @@ import SignUp from "../pages/SignUp/SignUp";
 import PlaceDetails from "../pages/PlaceDetails/PlaceDetails";
 import UserProfile from "../pages/UserProfile/UserProfile";
 import UpdateProfile from "../pages/UpdateProfile/UpdateProfile";
+import PrivateRouter from "./PrivateRouter";
 
 const router = createBrowserRouter([
     {
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/place/:id',
-                element: <PlaceDetails></PlaceDetails>,
+                element: <PrivateRouter><PlaceDetails></PlaceDetails></PrivateRouter>,
                     loader: () => fetch('/estates.json')
             },
 

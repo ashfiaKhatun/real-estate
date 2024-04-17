@@ -9,13 +9,19 @@ const Navbar = () => {
 
     const navList = <>
         <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/user-profile'>User Profile</NavLink></li>
-        <li><NavLink to='/update-profile'>Update Profile</NavLink></li>
+
+        {
+            user &&
+                <>
+                    <li><NavLink to='/user-profile'>User Profile</NavLink></li>
+                </>
+            
+        }
     </>
 
     const handleSignOut = () => {
         signOutUser()
-        .catch(error => console.log(error))
+            .catch(error => console.log(error))
     }
 
     return (
