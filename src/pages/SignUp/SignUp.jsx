@@ -1,17 +1,52 @@
+import { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Form, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { FaEyeSlash, FaEye } from "react-icons/fa";
+
 
 const SignUp = () => {
+    const { createUser, updateUser } = useContext(AuthContext)
+
+    const [showPassword, setShowPassword] = useState(false);
+
+    const navigate = useNavigate();
+
     const submitSignUp = e => {
         e.preventDefault();
 
-        const form = new Form(e.currentTarget);
+        const form = new FormData(e.currentTarget);
         const name = form.get('name');
         const photo = form.get('photo');
         const email = form.get('email');
         const password = form.get('password');
 
         console.log(name, photo, email, password);
+
+        if (password.length < 6) {
+            toast.error('Password should be atleast 6 characters');
+            return;
+        }
+        else if (!/[A-Z]/.test(password)) {
+            toast.error('Password should be atleast one uppercase characters');
+            return;
+        }
+        else if (!/[a-z]/.test(password)) {
+            toast.error('Password should be atleast one lowercase characters');
+            return;
+        }
+
+        createUser(email, password)
+            .then(() => {
+                updateUser(name, photo)
+                    .catch(error => console.log(error))
+            })
+
+            .catch(error => console.log(error))
+        e.target.reset();
+        navigate('/');
     }
 
     return (
@@ -19,6 +54,7 @@ const SignUp = () => {
             <Helmet>
                 <title>Sign Up</title>
             </Helmet>
+
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col">
                     <div className="text-center mb-6">
@@ -56,7 +92,21 @@ const SignUp = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" name="password" placeholder="password" className="input input-bordered" required />
+                                <div className="relative">
+                                    <input
+                                        type={
+                                            showPassword ? 'text' : 'password'
+                                        }
+                                        name="password"
+                                        placeholder="Password"
+                                        className="input input-bordered w-full" required />
+
+                                    <span className="absolute top-4 right-2 cursor-pointer" onClick={() => setShowPassword(!showPassword)}>
+                                        {
+                                            showPassword ? <FaEyeSlash /> : <FaEye />
+                                        }
+                                    </span>
+                                </div>
 
                             </div>
                             <div className="form-control mt-6">
@@ -68,6 +118,7 @@ const SignUp = () => {
                         </div>
                     </div>
                 </div>
+                <ToastContainer></ToastContainer>
             </div>
         </>
     );

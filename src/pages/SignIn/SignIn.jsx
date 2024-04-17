@@ -1,16 +1,28 @@
 import { Helmet } from "react-helmet-async";
-import { Form, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
+import { useContext, useState } from "react";
+import { FaEyeSlash, FaEye } from "react-icons/fa";
 
 const SignIn = () => {
+    const { signInUser } = useContext(AuthContext);
+
+    const [showPassword, setShowPassword] = useState(false);
 
     const submitSignIn = e => {
         e.preventDefault();
 
-        const form = new Form(e.currentTarget);
+        const form = new FormData(e.currentTarget);
         const email = form.get('email');
         const password = form.get('password');
 
         console.log(email, password);
+
+        signInUser(email, password)
+            .then(result => console.log(result))
+            .catch(error => console.log(error))
+        e.target.reset();
+
     }
 
 
@@ -33,15 +45,32 @@ const SignIn = () => {
                                 </label>
                                 <input type="email" name="email" placeholder="email" className="input input-bordered" required />
                             </div>
+
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" name="password" placeholder="password" className="input input-bordered" required />
+                                <div className="relative">
+                                    <input
+                                        type={
+                                            showPassword ? 'text' : 'password'
+                                        }
+                                        name="password"
+                                        placeholder="Password"
+                                        className="input input-bordered w-full" required />
+
+                                    <span className="absolute top-4 right-2 cursor-pointer" onClick={() => setShowPassword(!showPassword)}>
+                                        {
+                                            showPassword ? <FaEyeSlash /> : <FaEye />
+                                        }
+                                    </span>
+                                </div>
+
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
                             </div>
+
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Sign In</button>
                             </div>

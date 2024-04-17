@@ -1,11 +1,20 @@
 import { Link, NavLink } from "react-router-dom";
 import proImg from '../../assets/user.png'
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Navbar = () => {
+
+    const { signOutUser, user, loader } = useContext(AuthContext);
 
     const navList = <>
         <li><NavLink to='/'>Home</NavLink></li>
     </>
+
+    const handleSignOut = () => {
+        signOutUser()
+        .catch(error => console.log(error))
+    }
 
     return (
         <div className="navbar bg-base-100">
@@ -20,19 +29,48 @@ const Navbar = () => {
                 </div>
                 <a className="btn btn-ghost text-xl">Dream Home</a>
             </div>
+
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     {navList}
                 </ul>
             </div>
+
             <div className="navbar-end">
-                <div className="avatar">
-                    <div className="size-10 mr-4 rounded-full">
-                        <img src={proImg} />
-                    </div>
-                </div>
-                <Link to='/signin'><button>Sign In</button></Link>
+
+                {
+                    user ?
+                        <>
+                            {
+                                loader ? <span className="loading loading-dots loading-sm"></span> :
+                                    <>
+                                        <div className="tooltip tooltip-bottom mr-4" data-tip={user.displayName}>
+                                            <div className="avatar">
+                                                <div className="w-12 rounded-full">
+                                                    <img src={user.photoURL} />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <button className="btn btn-primary" onClick={handleSignOut}>Sign Out</button>
+                                    </>
+                            }
+                        </>
+                        :
+                        <>
+                            {loader ? <span className="loading loading-dots loading-sm text-center"></span> :
+                                <>
+                                    <div className="avatar mr-4">
+                                        <div className="w-12 rounded-full">
+                                            <img src={proImg} />
+                                        </div>
+                                    </div>
+                                    <Link to='/signin'><button className="btn btn-primary">Sign In</button></Link>
+                                </>}
+                        </>
+                }
             </div>
+
         </div>
     );
 };
