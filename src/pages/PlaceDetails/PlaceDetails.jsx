@@ -53,6 +53,9 @@ const PlaceDetails = () => {
                             }
 
                         </div>
+                        <div className="flex justify-end">
+                        <button className="btn bg-cyan-800 hover:bg-cyan-950 text-white">Buy Now</button>
+                        </div>
 
 
 

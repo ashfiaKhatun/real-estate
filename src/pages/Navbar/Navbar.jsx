@@ -36,7 +36,7 @@ const Navbar = () => {
                         {navList}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">Dream Home</a>
+                <a className="btn btn-ghost font-bold text-xl"><span className="text-cyan-800">Dream</span> Home</a>
             </div>
 
             <div className="navbar-center hidden md:flex">
@@ -61,7 +61,7 @@ const Navbar = () => {
                                             </div>
                                         </div>
 
-                                        <button className="btn bg-cyan-800 text-white" onClick={handleSignOut}>Sign Out</button>
+                                        <button className="btn bg-cyan-800 hover:bg-cyan-950 text-white" onClick={handleSignOut}>Sign Out</button>
                                     </>
                             }
                         </>
