@@ -39,7 +39,7 @@ const Navbar = () => {
             </div>
 
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
+                <ul className="menu menu-horizontal px-1 space-x-4 font-bold ">
                     {navList}
                 </ul>
             </div>
@@ -60,7 +60,7 @@ const Navbar = () => {
                                             </div>
                                         </div>
 
-                                        <button className="btn btn-primary" onClick={handleSignOut}>Sign Out</button>
+                                        <button className="btn bg-cyan-800 text-white" onClick={handleSignOut}>Sign Out</button>
                                     </>
                             }
                         </>
@@ -73,7 +73,7 @@ const Navbar = () => {
                                             <img src={proImg} />
                                         </div>
                                     </div>
-                                    <Link to='/signin'><button className="btn btn-primary">Sign In</button></Link>
+                                    <Link to='/signin'><button className="btn bg-cyan-800 text-white">Sign In</button></Link>
                                 </>}
                         </>
                 }

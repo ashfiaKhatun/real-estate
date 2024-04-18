@@ -61,7 +61,7 @@ const SignUp = () => {
                         <h1 className="text-5xl font-bold">Sign Up now!</h1>
 
                     </div>
-                    <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                    <div className="card shrink-0 w-full  shadow-2xl bg-base-100 px-8">
                         <form className="card-body" onSubmit={submitSignUp}>
                             {/* name */}
                             <div className="form-control">
@@ -84,7 +84,7 @@ const SignUp = () => {
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" name="email" placeholder="email" className="input input-bordered" required />
+                                <input type="email" name="email" placeholder="Email" className="input input-bordered" required />
                             </div>
 
                             {/* password */}
@@ -113,7 +113,7 @@ const SignUp = () => {
                                 <button className="btn btn-primary">Sign Up</button>
                             </div>
                         </form>
-                        <div>
+                        <div className="text-center mb-2">
                             <p>Already have any account? Please <Link to='/signin'><button className="btn btn-link">Sign In</button></Link></p>
                         </div>
                     </div>
