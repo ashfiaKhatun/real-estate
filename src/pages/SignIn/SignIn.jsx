@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const SignIn = () => {
-    const { signInUser, googleSignIn } = useContext(AuthContext);
+    const { signInUser, googleSignIn, githubSignIn } = useContext(AuthContext);
 
     const [showPassword, setShowPassword] = useState(false);
 
@@ -34,6 +34,14 @@ const SignIn = () => {
 
     const handleGoogleSignIn = () => {
         googleSignIn()
+            .then(() => {
+                navigate(location?.state ? location.state : '/');
+            })
+            .catch( error => console.log(error))
+    }
+    
+    const handleGithubSignIn = () => {
+        githubSignIn()
             .then(() => {
                 navigate(location?.state ? location.state : '/');
             })
@@ -87,12 +95,18 @@ const SignIn = () => {
                             </div>
 
                             <div className="form-control mt-6">
-                                <button className="btn btn-primary">Sign In</button>
+                                <button className="btn bg-cyan-800 text-white">Sign In</button>
                             </div>
                         </form>
-                        <div className="px-8">
+
+                        <div className="px-8 mb-4">
                             <button onClick={handleGoogleSignIn} className="btn btn-outline w-full ">Google</button>
                         </div>
+
+                        <div className="px-8">
+                            <button onClick={handleGithubSignIn} className="btn btn-outline w-full ">Github</button>
+                        </div>
+
                         <div className="text-center mb-2">
                             <p>New here? Please <Link to='/signup'><button className="btn btn-link">Sign Up</button></Link></p>
                         </div>

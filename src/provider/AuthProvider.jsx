@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import auth from "../firebase/firebase.config";
 import { GoogleAuthProvider } from "firebase/auth";
+import { GithubAuthProvider } from "firebase/auth";
 
 
 export const AuthContext = createContext(null);
@@ -42,6 +43,14 @@ const AuthProvider = ({children}) => {
         return signInWithPopup(auth, provider)
     }
 
+    const githubProvider = new GithubAuthProvider();
+
+    const githubSignIn = () => {
+        setLoader(true);
+        return signInWithPopup(auth, githubProvider)
+    }
+
+
     useEffect( () => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
@@ -59,7 +68,8 @@ const AuthProvider = ({children}) => {
         signInUser,
         signOutUser,
         updateUser,
-        googleSignIn
+        googleSignIn,
+        githubSignIn
     }
 
     return (

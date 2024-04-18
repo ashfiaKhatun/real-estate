@@ -53,7 +53,7 @@ const UpdateProfile = () => {
                                 <input type="text" name="photoUrl" placeholder="PhotoURL" className="input input-bordered" />
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn btn-primary">Update</button>
+                                <button className="btn bg-cyan-800 text-white">Update</button>
                             </div>
                         </form>
                     </div>
