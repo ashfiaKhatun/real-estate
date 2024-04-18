@@ -8,3 +8,6 @@ Characteristics:
 - User can update profile
 - Guest users can see the overview of properties
 - User can view details of any property after signing in
+
+npm packages: 
+- Swiper Slider
