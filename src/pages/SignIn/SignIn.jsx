@@ -3,9 +3,12 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { useContext, useState } from "react";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const SignIn = () => {
-    const { signInUser } = useContext(AuthContext);
+    const { signInUser, googleSignIn } = useContext(AuthContext);
 
     const [showPassword, setShowPassword] = useState(false);
 
@@ -21,12 +24,20 @@ const SignIn = () => {
 
 
         signInUser(email, password)
-            .then( () => {
+            .then(() => {
                 navigate(location?.state ? location.state : '/');
             })
-            .catch(error => console.log(error))
+            .catch(() => toast.error('Invalid email or password'))
         e.target.reset();
 
+    }
+
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(() => {
+                navigate(location?.state ? location.state : '/');
+            })
+            .catch( error => console.log(error))
     }
 
 
@@ -79,12 +90,17 @@ const SignIn = () => {
                                 <button className="btn btn-primary">Sign In</button>
                             </div>
                         </form>
+                        <div className="px-8">
+                            <button onClick={handleGoogleSignIn} className="btn btn-outline w-full ">Google</button>
+                        </div>
                         <div className="text-center mb-2">
                             <p>New here? Please <Link to='/signup'><button className="btn btn-link">Sign Up</button></Link></p>
                         </div>
                     </div>
                 </div>
+                <ToastContainer></ToastContainer>
             </div>
+
         </>
     );
 };

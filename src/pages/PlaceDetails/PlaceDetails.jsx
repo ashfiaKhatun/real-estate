@@ -14,7 +14,7 @@ const PlaceDetails = () => {
         <>
         <div className="px-2">
             <div className="max-w-6xl mx-auto rounded-xl bg-base-200 my-8 px-6">
-                <div className="hero-content gap-8 justify-between flex-col lg:flex-row">
+                <div className="hero-content gap-8 justify-between flex-col md:flex-row">
                     <div className=" w-1/2">
                         <img src={image} className=" rounded-lg shadow-2xl w-full" />
 
